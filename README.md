@@ -12,6 +12,13 @@ import cvzone
 import sys
 ```
 
-Else just install the requirement.txt
+Else just install the `requirement.txt`
 
+```pip install -r requirements.txt```
+
+To run the `code`
+
+```py main.py [image_name.extension```
+
+Example ```py main.py image1.jpg```
 

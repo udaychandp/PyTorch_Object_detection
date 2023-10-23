@@ -2,4 +2,3 @@ torch
 torchvision
 opencv-python
 cvzone
-sys
