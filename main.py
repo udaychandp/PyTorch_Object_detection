@@ -2,7 +2,6 @@ import torch
 import torchvision
 from torchvision import transforms as T
 import cv2
-import cvzone
 import sys
 
 
@@ -28,12 +27,13 @@ with torch.no_grad():
 
     bbox,scores,labels = ypred[0]['boxes'],ypred[0]['scores'],ypred[0]['labels']
     nums = torch.argwhere(scores > 0.60).shape[0]
+    font = cv2.FONT_HERSHEY_DUPLEX
     for i in range(nums):
         x,y,w,h = bbox[i].numpy().astype('int')
-        cv2.rectangle(img,(x,y),(w,h),(0,0,255),5)
+        alfa = cv2.rectangle(img,(x,y),(w,h),(0,0,255),2)
         classname = labels[i].numpy().astype('int')
         classdetected = classnames[classname-1]
-        cvzone.putTextRect(img,classdetected,[x,y+100])
+        img1 = cv2.putText(alfa,classdetected,(x,y-10),font,1,(0,0,255),1,cv2.LINE_AA)
 
 cv2.imshow('Detection',img)
 cv2.waitKey(0)
